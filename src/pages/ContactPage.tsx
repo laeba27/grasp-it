@@ -65,8 +65,8 @@ const ContactPage: React.FC = () => {
     {
       icon: <Mail size={24} />,
       title: 'Email',
-      content: 'hello@graspic.com',
-      link: 'mailto:hello@graspic.com',
+      content: 'hello@grasp-it.com',
+      link: 'mailto:hello@grasp-it.com',
     },
     {
       icon: <Phone size={24} />,

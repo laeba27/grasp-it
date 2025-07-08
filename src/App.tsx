@@ -78,7 +78,7 @@ function App() {
                 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent cursor-pointer"
                 onClick={() => setCurrentPage('home')}
               >
-                GRASPIC
+                grasp-it
               </motion.div>
             </div>
 

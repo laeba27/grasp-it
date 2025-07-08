@@ -186,7 +186,7 @@ const HomePage: React.FC = () => {
               viewport={{ once: true }}
               className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent"
             >
-              Why Choose Graspic?
+              Why Choose grasp-it?
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
@@ -248,7 +248,7 @@ const HomePage: React.FC = () => {
                 viewport={{ once: true }}
                 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent"
               >
-                About Graspic
+                About grasp-it
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, x: -30 }}

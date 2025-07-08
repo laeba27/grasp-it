@@ -115,7 +115,7 @@ const Footer: React.FC = () => {
               className="mb-6"
             >
               <h3 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent mb-4">
-                GRASPIC
+                grasp-it
               </h3>
               <p className="text-gray-300 mb-6">
                 Crafting digital experiences that transcend reality. We are the future of web development.
@@ -129,7 +129,7 @@ const Footer: React.FC = () => {
                 className="flex items-center space-x-3 text-gray-300 hover:text-cyan-400 transition-colors duration-300"
               >
                 <Mail size={16} className="text-cyan-400" />
-                <span>hello@graspic.com</span>
+                <span>hello@grasp-it.com</span>
               </motion.div>
               <motion.div
                 whileHover={{ x: 5 }}
@@ -255,7 +255,7 @@ const Footer: React.FC = () => {
         >
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-300 mb-4 md:mb-0">
-              <p>&copy; {currentYear} Graspic. All rights reserved.</p>
+              <p>&copy; {currentYear} grasp-it. All rights reserved.</p>
               <p className="text-sm text-gray-400 mt-1">
                 Designed with ❤️ in the cyberpunk universe
               </p>
