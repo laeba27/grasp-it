@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Zap, Globe, ArrowRight, Star, Sparkles } from 'lucide-react';
+import { Code, Zap, Globe, ArrowRight, Star, Sparkles, Mail } from 'lucide-react';
 import AnimatedSection from '../components/AnimatedSection';
 import ParallaxSection from '../components/ParallaxSection';
 
@@ -392,6 +392,137 @@ const HomePage: React.FC = () => {
             </span>
           </motion.button>
         </AnimatedSection>
+      </section>
+
+      {/* What We Build Section */}
+      <section className="py-20 px-4 bg-black/30 relative overflow-hidden">
+        <ParallaxSection speed={0.2}>
+          <div className="absolute top-0 left-1/3 w-96 h-96 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-full blur-3xl" />
+        </ParallaxSection>
+        <div className="max-w-6xl mx-auto relative z-10">
+          <AnimatedSection className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">What We Build</h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">From simple sites to complex systems, we craft digital solutions for every need.</p>
+          </AnimatedSection>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { icon: <Globe size={32} />, title: 'Inquiry Website', feature: 'For schools, clinics, and more' },
+              { icon: <Zap size={32} />, title: 'Learning Management Systems', feature: 'Course Tracking, Quiz System' },
+              { icon: <Code size={32} />, title: 'Client Dashboards', feature: 'Admin Panels, Analytics' },
+              { icon: <Star size={32} />, title: 'ERP & CRM Web Apps', feature: 'Workflow Automation' },
+              { icon: <Sparkles size={32} />, title: 'E-commerce Stores', feature: 'Product Catalog, Payments' },
+              { icon: <ArrowRight size={32} />, title: 'Booking Systems', feature: 'Calendar, Reminders' },
+              { icon: <Globe size={32} />, title: 'Portfolio Websites', feature: 'Showcase Your Work' },
+              { icon: <Code size={32} />, title: 'Company Profiles', feature: 'Corporate Presence' },
+            ].map((item, idx) => (
+              <AnimatedSection key={idx} delay={idx * 0.1} direction="up">
+                <motion.div
+                  whileHover={{ scale: 1.07, boxShadow: "0 0 30px rgba(0, 217, 255, 0.2)" }}
+                  className="p-8 bg-black/40 rounded-xl border border-cyan-500/20 hover:border-cyan-400 transition-all duration-300 group h-full flex flex-col items-center"
+                >
+                  <div className="mb-4 text-cyan-400 group-hover:text-purple-400 transition-colors duration-300">{item.icon}</div>
+                  <h3 className="text-lg font-semibold mb-2 group-hover:text-cyan-400 transition-colors duration-300">{item.title}</h3>
+                  <p className="text-gray-300 text-sm">{item.feature}</p>
+                </motion.div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Process Section */}
+      <section className="py-20 px-4 relative">
+        <ParallaxSection speed={0.15}>
+          <div className="absolute top-0 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-cyan-500/10 rounded-full blur-3xl" />
+        </ParallaxSection>
+        <div className="max-w-5xl mx-auto relative z-10">
+          <AnimatedSection className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Our Process</h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">A seamless journey from idea to launch, with you every step of the way.</p>
+          </AnimatedSection>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {[
+              { icon: <Sparkles size={32} />, title: 'Discovery Call', desc: 'We understand your goals and vision.' },
+              { icon: <Code size={32} />, title: 'Proposal + Timeline', desc: 'Clear plan, scope, and milestones.' },
+              { icon: <Zap size={32} />, title: 'Design & Development', desc: 'We build, you review, we refine.' },
+              { icon: <Star size={32} />, title: 'Launch + Support', desc: 'Go live and ongoing help.' },
+            ].map((step, idx) => (
+              <AnimatedSection key={idx} delay={idx * 0.15} direction="up">
+                <motion.div
+                  whileHover={{ scale: 1.08, rotate: 2, boxShadow: "0 0 30px rgba(139, 92, 246, 0.2)" }}
+                  className="p-8 bg-black/40 rounded-xl border border-purple-500/20 hover:border-cyan-400 transition-all duration-300 group h-full flex flex-col items-center"
+                >
+                  <div className="mb-4 text-purple-400 group-hover:text-cyan-400 transition-colors duration-300">{step.icon}</div>
+                  <h3 className="text-lg font-semibold mb-2 group-hover:text-purple-400 transition-colors duration-300">{step.title}</h3>
+                  <p className="text-gray-300 text-sm">{step.desc}</p>
+                </motion.div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Add-on Services Section */}
+      <section className="py-16 px-4 bg-black/20 relative">
+        <ParallaxSection speed={0.1}>
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-32 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-full blur-3xl" />
+        </ParallaxSection>
+        <div className="max-w-5xl mx-auto relative z-10">
+          <AnimatedSection className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">Add-on Services</h2>
+            <p className="text-lg text-gray-300 max-w-xl mx-auto">We offer more than just builds. Enhance your project with our ongoing support and expertise.</p>
+          </AnimatedSection>
+          <div className="flex flex-wrap justify-center gap-6">
+            {[
+              { icon: <Globe size={24} />, label: 'SEO + Content Writing' },
+              { icon: <Mail size={24} />, label: 'Email Marketing Setup' },
+              { icon: <Zap size={24} />, label: 'LMS Hosting & Maintenance' },
+              { icon: <Star size={24} />, label: 'Regular Updates + Tech Support' },
+              { icon: <Sparkles size={24} />, label: 'AI/Chatbot Integration' },
+            ].map((service, idx) => (
+              <AnimatedSection key={idx} delay={idx * 0.1} direction="up">
+                <motion.div
+                  whileHover={{ scale: 1.1, backgroundColor: "#0ff1ce22" }}
+                  className="flex items-center gap-3 px-6 py-4 bg-black/40 rounded-full border border-cyan-500/20 hover:border-cyan-400 transition-all duration-300 group shadow-md"
+                >
+                  <span className="text-cyan-400 group-hover:text-purple-400 transition-colors duration-300">{service.icon}</span>
+                  <span className="text-gray-200 font-medium group-hover:text-cyan-400 transition-colors duration-300">{service.label}</span>
+                </motion.div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Mini Service-Based Portfolio Section */}
+      <section className="py-20 px-4 relative">
+        <ParallaxSection speed={0.2}>
+          <div className="absolute top-0 left-1/4 w-80 h-80 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-full blur-3xl" />
+        </ParallaxSection>
+        <div className="max-w-6xl mx-auto relative z-10">
+          <AnimatedSection className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Our Portfolio</h2>
+            <p className="text-lg text-gray-300 max-w-xl mx-auto">See the impact of our work across industries and platforms.</p>
+          </AnimatedSection>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: 'See Our LMS Projects', desc: 'Modern, scalable learning platforms.', btn: 'View LMS', color: 'from-cyan-500 to-purple-500' },
+              { title: 'View E-commerce Stores Built by Us', desc: 'High-converting online shops.', btn: 'View Stores', color: 'from-purple-500 to-pink-500' },
+              { title: 'Check ERP Dashboard Samples', desc: 'Powerful business management tools.', btn: 'View Dashboards', color: 'from-cyan-400 to-pink-500' },
+            ].map((item, idx) => (
+              <AnimatedSection key={idx} delay={idx * 0.15} direction="up">
+                <motion.div
+                  whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(0, 217, 255, 0.2)" }}
+                  className={`p-8 rounded-xl bg-gradient-to-br ${item.color} shadow-lg flex flex-col items-center h-full`}
+                >
+                  <h3 className="text-xl font-semibold mb-2 text-white">{item.title}</h3>
+                  <p className="text-gray-100 mb-6">{item.desc}</p>
+                  <button className="px-6 py-2 bg-black/40 rounded-full text-cyan-200 font-semibold hover:bg-black/60 transition-all duration-300 border border-cyan-400/30 hover:border-cyan-400">{item.btn}</button>
+                </motion.div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
       </section>
     </div>
   );

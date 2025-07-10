@@ -24,7 +24,7 @@ function App() {
 
   const navigation = [
     { name: 'Home', id: 'home' },
-    { name: 'Templates', id: 'templates' },
+    { name: 'Services', id: 'templates' },
     { name: 'Pricing', id: 'pricing' },
     { name: 'Contact', id: 'contact' },
   ];
@@ -100,9 +100,13 @@ function App() {
                 </motion.button>
               ))}
             </div>
-
+            {/* Contact Info */}
+            <div className="hidden md:flex flex-col items-end text-right text-xs text-gray-300 mr-4">
+  <span className="hover:text-cyan-400 transition-colors">📞 +91 870 025 0072</span>
+  <span className="hover:text-cyan-400 transition-colors">✉️ hello@grasp-it.com</span>
+</div>
             {/* Theme Toggle & Mobile Menu */}
-            <div className="flex items-center space-x-4">
+            {/* <div className="flex items-center space-x-4">
               <motion.button
                 whileHover={{ scale: 1.1, rotate: 180 }}
                 whileTap={{ scale: 0.9 }}
@@ -120,7 +124,7 @@ function App() {
               >
                 {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
               </motion.button>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -174,6 +178,19 @@ function App() {
           </motion.div>
         </AnimatePresence>
       </main>
+      <a
+  href="https://wa.me/918700250072"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg transition-all duration-300"
+  title="Chat on WhatsApp"
+>
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+    alt="WhatsApp"
+    className="w-6 h-6"
+  />
+</a>
 
       {/* Footer */}
       <Footer />
