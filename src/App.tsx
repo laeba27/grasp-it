@@ -93,8 +93,7 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <div className="flex items-center space-x-3">
-              {/* Logo Image */}
+            <div className="flex items-center">
               <motion.div 
                 whileHover={{ scale: 1.05, rotate: 5 }} 
                 className="cursor-pointer" 
@@ -103,17 +102,8 @@ function App() {
                 <img 
                   src="/logo.png" 
                   alt="grasp-it logo"
-                  className="w-14 h-14 rounded-full border-2 border-cyan-500/30 hover:border-cyan-400 transition-all duration-300"
+                  className="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-cyan-500/30 hover:border-cyan-400 transition-all duration-300"
                 />
-              </motion.div>
-
-              {/* Brand Name */}
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent cursor-pointer"
-                onClick={() => setCurrentPage('home')}
-              >
-                GRASP-IT
               </motion.div>
             </div>
 
@@ -138,29 +128,25 @@ function App() {
             </div>
             {/* Contact Info */}
             <div className="hidden md:flex flex-col items-end text-right text-xs text-gray-300 mr-4">
-  <span className="hover:text-cyan-400 transition-colors">📞 +91 870 025 0072</span>
-  <span className="hover:text-cyan-400 transition-colors">✉️ gograspit12@gmail.com</span>
-</div>
-            {/* Theme Toggle & Mobile Menu */}
-            {/* <div className="flex items-center space-x-4">
-              <motion.button
-                whileHover={{ scale: 1.1, rotate: 180 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={() => setDarkMode(!darkMode)}
-                className="p-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-colors duration-300"
-              >
-                {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-              </motion.button>
-              
+              <span className="hover:text-cyan-400 transition-colors">📞 +91 870 025 0072</span>
+              <span className="hover:text-cyan-400 transition-colors">✉️ gograspit12@gmail.com</span>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="md:hidden p-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-colors duration-300"
+                className="p-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-colors duration-300"
               >
-                {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                <div className="w-6 h-6 flex flex-col justify-center items-center">
+                  <div className={`w-5 h-0.5 bg-gray-300 transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-1' : ''}`}></div>
+                  <div className={`w-5 h-0.5 bg-gray-300 my-1 transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></div>
+                  <div className={`w-5 h-0.5 bg-gray-300 transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-1' : ''}`}></div>
+                </div>
               </motion.button>
-            </div> */}
+            </div>
           </div>
         </div>
 
@@ -172,28 +158,28 @@ function App() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden bg-black/90 backdrop-blur-md border-t border-cyan-500/20"
+              className="md:hidden bg-black/95 backdrop-blur-xl border-t border-cyan-500/20"
             >
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {navigation.map((item) => (
-                <motion.button
-                  key={item.id}
-                  whileHover={{ scale: 1.02, x: 10 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => {
-                    setCurrentPage(item.id);
-                    setIsMenuOpen(false);
-                  }}
-                  className={`block px-3 py-2 text-base font-medium w-full text-left transition-all duration-300 ${
-                    currentPage === item.id
-                      ? 'text-cyan-400 bg-cyan-400/10'
-                      : 'text-gray-300 hover:text-cyan-400 hover:bg-cyan-400/5'
-                  }`}
-                >
-                  {item.name}
-                </motion.button>
-              ))}
-            </div>
+              <div className="px-4 py-4 space-y-2">
+                {navigation.map((item) => (
+                  <motion.button
+                    key={item.id}
+                    whileHover={{ scale: 1.02, x: 10 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => {
+                      setCurrentPage(item.id);
+                      setIsMenuOpen(false);
+                    }}
+                    className={`block px-4 py-3 text-lg font-medium w-full text-left rounded-lg transition-all duration-300 ${
+                      currentPage === item.id
+                        ? 'text-cyan-400 bg-cyan-400/10 border border-cyan-400/20'
+                        : 'text-gray-300 hover:text-cyan-400 hover:bg-cyan-400/5'
+                    }`}
+                  >
+                    {item.name}
+                  </motion.button>
+                ))}
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

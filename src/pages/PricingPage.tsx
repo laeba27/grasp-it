@@ -10,8 +10,8 @@ const PricingPage: React.FC = () => {
     {
       name: 'Starter',
       icon: <Zap size={32} />,
-      price: '₹10,999',
-      period: 'per project',
+      // price: '₹10,999',
+      // period: 'per project',
       description: 'Perfect for small businesses and personal projects',
       features: [
         'Responsive Design',
@@ -34,8 +34,8 @@ const PricingPage: React.FC = () => {
     {
       name: 'Professional',
       icon: <Crown size={32} />,
-      price: '₹65,499',
-      period: 'per project',
+      // price: '₹65,499',
+      // period: 'per project',
       description: 'Ideal for growing businesses and e-commerce',
       features: [
         'Everything in Starter',
@@ -59,8 +59,8 @@ const PricingPage: React.FC = () => {
     {
       name: 'Enterprise',
       icon: <Rocket size={32} />,
-      price: '₹99,999',
-      period: 'per project',
+      // price: '₹99,999',
+      // period: 'per project',
       description: 'Complete solution for large-scale projects',
       features: [
         'Everything in Professional',
@@ -83,22 +83,22 @@ const PricingPage: React.FC = () => {
   const addOns = [
     {
       name: 'Additional Pages',
-      price: '₹4,999',
+      // price: '₹4,999',
       description: 'Extra pages beyond the initial scope',
     },
     {
       name: 'Extended Support',
-      price: '₹8,499',
+      // price: '₹8,499',
       description: 'Additional 30 days of support and maintenance',
     },
     {
       name: 'Rush Delivery',
-      price: '₹7,499',
+      // price: '₹7,499',
       description: 'Expedited delivery (50% faster completion)',
     },
     {
       name: 'Custom Animation',
-      price: '₹5,999',
+      // price: '₹5,999',
       description: 'Bespoke animations and micro-interactions',
     },
   ];
