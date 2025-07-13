@@ -396,7 +396,7 @@ const HomePage: React.FC = () => {
         <Crown size={40} className="text-white" />
       </div>
       <h3 className="text-2xl font-bold mb-2 text-cyan-400">Shivam Goyat</h3>
-      <p className="text-cyan-400 font-semibold mb-4">Founder & CEO</p>
+      <p className="text-cyan-400 font-semibold mb-4">Founder </p>
       <p className="text-gray-300 mb-6">
           Shivam leads the charge with bold ideas, visionary strategy, and unmatched energy in redefining the digital realm.
       </p>
@@ -415,7 +415,7 @@ const HomePage: React.FC = () => {
         <Code size={40} className="text-white" />
       </div>
       <h3 className="text-2xl font-bold mb-2 text-purple-400">Laeba Firdous</h3>
-      <p className="text-purple-400 font-semibold mb-4">Web Developer</p>
+      <p className="text-purple-400 font-semibold mb-4">Co-Founder</p>
       <p className="text-gray-300 mb-6">
         Code crafter and UI magician, Laeba specializes in creating blazing-fast, elegant web apps with cutting-edge tech. She makes the pixels dance.
       </p>
@@ -434,7 +434,7 @@ const HomePage: React.FC = () => {
         <Zap size={40} className="text-white" />
       </div>
       <h3 className="text-2xl font-bold mb-2 text-green-400">Aarav Mehta</h3>
-      <p className="text-green-400 font-semibold mb-4">Full-Stack Developer</p>
+      <p className="text-green-400 font-semibold mb-4">CMO</p>
       <p className="text-gray-300 mb-6">
         A builder of robust backend systems and interactive frontends. Aarav brings reliability and performance to every digital experience we craft.
       </p>
