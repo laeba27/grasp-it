@@ -23,7 +23,7 @@ const services = [
       {
         icon: <User size={24} />,
         title: "Inquiry Website",
-        image: "../../public/enquiry.png",
+        image: "/enquiry.png",
         short:
           "Perfect for schools, clinics, and organizations to collect leads and inquiries.",
         details:
@@ -46,7 +46,7 @@ const services = [
       {
         icon: <Server size={24} />, // optional: you can change the icon as per your design library
         title: "Small ERP Systems",
-        image: "../../public/erp.png",
+        image: "/erp.png",
         short:
           "Streamline your business operations with a custom ERP solution.",
         details:
@@ -71,7 +71,7 @@ const services = [
       {
         icon: <FileText size={24} />,
         title: "Portfolio Website",
-        image: "../../public/portfolio.png",
+        image: "/portfolio.png",
         short: "Showcase your work, skills, and achievements with style.",
         details:
           "Portfolio Websites are crafted for creatives, freelancers, and agencies. Display your projects, testimonials, and skills with interactive galleries and smooth animations.",
@@ -87,7 +87,7 @@ const services = [
       {
         icon: <FileText size={24} />,
         title: "Landing Pages",
-        image: "../../public/landing-page.png",
+        image: "/landing-page.png",
         short: "High-converting pages for campaigns, products, or events.",
         details:
           "Landing Pages are focused on conversion. We design and build pages for product launches, events, or marketing campaigns, with A/B testing and analytics.",
@@ -102,7 +102,7 @@ const services = [
       {
         icon: <Package size={24} />,
         title: "Shopify Development",
-        image: "../../public/shopify.png",
+        image: "/shopify.png",
         short: "Custom Shopify stores tailored to your brand and products.",
         details:
           "We build Shopify stores that are fast, beautiful, and easy to manage. Includes theme customization, app integration, and training for your team.",

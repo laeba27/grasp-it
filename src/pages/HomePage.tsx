@@ -1,10 +1,13 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Code, Zap, Globe, ArrowRight, Star, Sparkles, Mail } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, Variants } from 'framer-motion';
+import { Code, Zap, Globe, ArrowRight, Star, Sparkles, Mail, Crown } from 'lucide-react';
 import AnimatedSection from '../components/AnimatedSection';
 import ParallaxSection from '../components/ParallaxSection';
+import DynamicInquiryModal from '../components/DynamicInquiryModal';
 
 const HomePage: React.FC = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  
   const features = [
     {
       icon: <Code size={24} />,
@@ -32,7 +35,7 @@ const HomePage: React.FC = () => {
     'SEO Optimization',
   ];
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -43,19 +46,19 @@ const HomePage: React.FC = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 50, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: "easeOut",
       },
     },
   };
 
-  const floatingVariants = {
+  const floatingVariants: Variants = {
     animate: {
       y: [-10, 10, -10],
       transition: {
@@ -113,6 +116,7 @@ const HomePage: React.FC = () => {
             <motion.button
               whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(0, 217, 255, 0.5)" }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => setModalOpen(true)}
               className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full font-semibold hover:from-cyan-600 hover:to-purple-700 transition-all duration-300 shadow-lg relative overflow-hidden group"
             >
               <motion.div
@@ -130,6 +134,11 @@ const HomePage: React.FC = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                // Navigate to services page
+                const event = new CustomEvent('navigate', { detail: 'templates' });
+                window.dispatchEvent(event);
+              }}
               className="px-8 py-4 border-2 border-cyan-400 rounded-full font-semibold hover:bg-cyan-400 hover:text-black transition-all duration-300 relative overflow-hidden group"
             >
               <motion.div
@@ -250,6 +259,7 @@ const HomePage: React.FC = () => {
               >
                 About grasp-it
               </motion.h2>
+
               <motion.p
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -257,8 +267,9 @@ const HomePage: React.FC = () => {
                 viewport={{ once: true }}
                 className="text-lg text-gray-300 mb-6"
               >
-                We are a cyberpunk-inspired digital agency that specializes in creating futuristic web experiences. Our team of skilled developers and designers work together to bring your vision to life in the digital realm.
+    grasp-it is a modern web development agency that helps businesses grow through stunning design, high-performance code, and meaningful strategy. We specialize in creating impactful digital experiences—from personal portfolios to e-commerce stores and enterprise-grade web apps.
               </motion.p>
+
               <motion.p
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -266,8 +277,9 @@ const HomePage: React.FC = () => {
                 viewport={{ once: true }}
                 className="text-lg text-gray-300 mb-8"
               >
-                From WordPress and Shopify to custom web applications, we deliver solutions that are not just functional, but truly extraordinary.
+    Whether you're a startup founder, creator, or brand, we bring full-stack expertise, attention to detail, and a collaborative mindset to every project. Our services include custom web development, WordPress, Shopify, content-driven websites, SEO optimization, and more.
               </motion.p>
+
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -286,9 +298,10 @@ const HomePage: React.FC = () => {
                     <Star size={24} className="text-yellow-400 fill-current" />
                   </motion.div>
                 ))}
-                <span className="text-gray-300">Trusted by 500+ clients</span>
+    <span className="text-gray-300">Trusted by 20+ happy clients</span>
               </motion.div>
             </AnimatedSection>
+
             
             <AnimatedSection direction="right">
               <motion.div
@@ -325,7 +338,7 @@ const HomePage: React.FC = () => {
                       transition={{ duration: 2, repeat: Infinity }}
                       className="text-6xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent mb-4"
                     >
-                      500+
+                      50+
                     </motion.div>
                     <div className="text-xl text-gray-300">Projects Delivered</div>
                   </div>
@@ -339,6 +352,147 @@ const HomePage: React.FC = () => {
                 </motion.div>
               </motion.div>
             </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-20 px-4 relative overflow-hidden">
+        <ParallaxSection speed={0.2}>
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/10 to-cyan-500/10 rounded-full blur-3xl" />
+        </ParallaxSection>
+        
+        <div className="max-w-6xl mx-auto relative z-10">
+          <AnimatedSection className="text-center mb-16">
+            <motion.h2
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent"
+            >
+              Meet Our Team
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-xl text-gray-300 max-w-2xl mx-auto"
+            >
+              The brilliant minds behind grasp-it. We're passionate about creating extraordinary digital experiences.
+            </motion.p>
+          </AnimatedSection>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Founder - Shivam Goyat */}
+            <AnimatedSection delay={0.1} direction="up">
+  <motion.div
+    whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(0, 217, 255, 0.3)", rotateY: 5 }}
+    className="p-8 bg-black/40 backdrop-blur-sm rounded-xl border border-cyan-500/20 hover:border-cyan-500/40 transition-all duration-300 group relative overflow-hidden"
+  >
+    <div className="text-center relative z-10">
+      <div className="w-24 h-24 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+        <Crown size={40} className="text-white" />
+      </div>
+      <h3 className="text-2xl font-bold mb-2 text-cyan-400">Shivam Goyat</h3>
+      <p className="text-cyan-400 font-semibold mb-4">Founder & CEO</p>
+      <p className="text-gray-300 mb-6">
+          Shivam leads the charge with bold ideas, visionary strategy, and unmatched energy in redefining the digital realm.
+      </p>
+    </div>
+  </motion.div>
+</AnimatedSection>
+
+            {/* Developer - Laeba Firdous */}
+<AnimatedSection delay={0.2} direction="up">
+  <motion.div
+    whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(0, 217, 255, 0.3)", rotateY: 5 }}
+    className="p-8 bg-black/40 backdrop-blur-sm rounded-xl border border-cyan-500/20 hover:border-cyan-500/40 transition-all duration-300 group relative overflow-hidden"
+  >
+    <div className="text-center relative z-10">
+      <div className="w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6">
+        <Code size={40} className="text-white" />
+      </div>
+      <h3 className="text-2xl font-bold mb-2 text-purple-400">Laeba Firdous</h3>
+      <p className="text-purple-400 font-semibold mb-4">Web Developer</p>
+      <p className="text-gray-300 mb-6">
+        Code crafter and UI magician, Laeba specializes in creating blazing-fast, elegant web apps with cutting-edge tech. She makes the pixels dance.
+      </p>
+    </div>
+  </motion.div>
+</AnimatedSection>
+
+{/* Developer - Aarav Mehta */}
+<AnimatedSection delay={0.3} direction="up">
+  <motion.div
+    whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(0, 217, 255, 0.3)", rotateY: 5 }}
+    className="p-8 bg-black/40 backdrop-blur-sm rounded-xl border border-cyan-500/20 hover:border-cyan-500/40 transition-all duration-300 group relative overflow-hidden"
+  >
+    <div className="text-center relative z-10">
+      <div className="w-24 h-24 bg-gradient-to-r from-green-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+        <Zap size={40} className="text-white" />
+      </div>
+      <h3 className="text-2xl font-bold mb-2 text-green-400">Aarav Mehta</h3>
+      <p className="text-green-400 font-semibold mb-4">Full-Stack Developer</p>
+      <p className="text-gray-300 mb-6">
+        A builder of robust backend systems and interactive frontends. Aarav brings reliability and performance to every digital experience we craft.
+      </p>
+    </div>
+  </motion.div>
+</AnimatedSection>
+          </div>
+
+          {/* Team Values */}
+          <div className="mt-20">
+            <AnimatedSection className="text-center mb-12">
+              <motion.h3
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="text-3xl font-bold mb-8 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent"
+              >
+                Our Values
+              </motion.h3>
+            </AnimatedSection>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  icon: <Zap size={32} />,
+                  title: "Innovation First",
+                  description: "We constantly push boundaries and explore new technologies to deliver cutting-edge solutions."
+                },
+                {
+                  icon: <Star size={32} />,
+                  title: "Excellence",
+                  description: "Every project is crafted with meticulous attention to detail and unwavering commitment to quality."
+                },
+                {
+                  icon: <Globe size={32} />,
+                  title: "Client Success",
+                  description: "Your success is our success. We're dedicated to helping you achieve your digital goals."
+                }
+              ].map((value, index) => (
+                <AnimatedSection key={index} delay={index * 0.1} direction="up">
+                  <motion.div
+                    whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(0, 217, 255, 0.2)" }}
+                    className="p-6 bg-black/20 backdrop-blur-sm rounded-xl border border-cyan-500/20 hover:border-cyan-500/40 transition-all duration-300 text-center"
+                  >
+                    <div className="text-cyan-400 mb-4 group-hover:text-purple-400 transition-colors duration-300">
+                      {value.icon}
+                    </div>
+                    <h4 className="text-lg font-semibold mb-2 group-hover:text-cyan-400 transition-colors duration-300">
+                      {value.title}
+                    </h4>
+                    <p className="text-gray-300 text-sm">
+                      {value.description}
+                    </p>
+                  </motion.div>
+                </AnimatedSection>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -378,6 +532,7 @@ const HomePage: React.FC = () => {
               boxShadow: "0 0 40px rgba(0, 217, 255, 0.6)"
             }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => setModalOpen(true)}
             className="px-12 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full font-semibold hover:from-cyan-600 hover:to-purple-700 transition-all duration-300 shadow-lg relative overflow-hidden group"
           >
             <motion.div
@@ -494,36 +649,206 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Mini Service-Based Portfolio Section */}
-      <section className="py-20 px-4 relative">
+      {/* Portfolio Section - Redesigned */}
+      <section className="py-20 px-4 relative overflow-hidden">
         <ParallaxSection speed={0.2}>
           <div className="absolute top-0 left-1/4 w-80 h-80 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl" />
         </ParallaxSection>
-        <div className="max-w-6xl mx-auto relative z-10">
+        
+        <div className="max-w-7xl mx-auto relative z-10">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Our Portfolio</h2>
-            <p className="text-lg text-gray-300 max-w-xl mx-auto">See the impact of our work across industries and platforms.</p>
+            <motion.h2
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent"
+            >
+              Our Portfolio
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-xl text-gray-300 max-w-3xl mx-auto"
+            >
+              Discover our diverse collection of digital solutions that have transformed businesses and delighted users worldwide.
+            </motion.p>
           </AnimatedSection>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { title: 'See Our LMS Projects', desc: 'Modern, scalable learning platforms.', btn: 'View LMS', color: 'from-cyan-500 to-purple-500' },
-              { title: 'View E-commerce Stores Built by Us', desc: 'High-converting online shops.', btn: 'View Stores', color: 'from-purple-500 to-pink-500' },
-              { title: 'Check ERP Dashboard Samples', desc: 'Powerful business management tools.', btn: 'View Dashboards', color: 'from-cyan-400 to-pink-500' },
-            ].map((item, idx) => (
-              <AnimatedSection key={idx} delay={idx * 0.15} direction="up">
+
+          {/* Portfolio Categories */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            {/* Featured Project */}
+            <AnimatedSection delay={0.1} direction="up">
+              <motion.div
+                whileHover={{ 
+                  scale: 1.02,
+                  boxShadow: "0 0 40px rgba(0, 217, 255, 0.3)"
+                }}
+                className="relative group cursor-pointer"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500" />
+                <div className="relative p-8 bg-black/40 backdrop-blur-sm rounded-2xl border border-cyan-500/30 hover:border-cyan-400/50 transition-all duration-300">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-xl flex items-center justify-center">
+                        <Sparkles size={24} className="text-white" />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-white">Featured Project</h3>
+                        <p className="text-cyan-400 text-sm">Latest Work</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-3xl font-bold text-cyan-400">2024</div>
+                      <div className="text-gray-400 text-sm">Completed</div>
+                    </div>
+                  </div>
+                  
+                  <h4 className="text-xl font-semibold mb-3 text-white">E-Learning Platform</h4>
+                  <p className="text-gray-300 mb-6 leading-relaxed">
+                    A comprehensive learning management system with advanced analytics, interactive courses, and seamless user experience. Built with React, Node.js, and MongoDB.
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {['React', 'Node.js', 'MongoDB', 'AWS', 'Stripe'].map((tech, idx) => (
+                      <span key={idx} className="px-3 py-1 bg-cyan-500/20 text-cyan-300 text-xs rounded-full border border-cyan-500/30">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-4">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                        <span className="text-green-400 text-sm">Live</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                        <span className="text-blue-400 text-sm">Responsive</span>
+                      </div>
+                    </div>
+                    {/* <button className="px-6 py-2 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full text-white font-semibold hover:from-cyan-600 hover:to-purple-700 transition-all duration-300">
+                      View Project
+                    </button> */}
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatedSection>
+
+            {/* Project Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                {
+                  title: 'E-commerce Store',
+                  category: 'E-commerce',
+                  tech: ['Next.js', 'Stripe', 'PostgreSQL'],
+                  status: 'Live',
+                  color: 'from-purple-500 to-pink-600'
+                },
+                {
+                  title: 'CRM Dashboard',
+                  category: 'Business',
+                  tech: ['React', 'Node.js', 'MySQL'],
+                  status: 'Live',
+                  color: 'from-green-500 to-blue-600'
+                },
+                {
+                  title: 'Portfolio Website',
+                  category: 'Creative',
+                  tech: ['React', 'Framer Motion', 'Tailwind'],
+                  status: 'Live',
+                  color: 'from-orange-500 to-red-600'
+                },
+                {
+                  title: 'Booking System',
+                  category: 'SaaS',
+                  tech: ['Vue.js', 'Firebase', 'Stripe'],
+                  status: 'Live',
+                  color: 'from-indigo-500 to-purple-600'
+                }
+              ].map((project, idx) => (
+                <AnimatedSection key={idx} delay={0.2 + idx * 0.1} direction="up">
+                  <motion.div
+                    whileHover={{ 
+                      scale: 1.05,
+                      boxShadow: "0 0 30px rgba(0, 217, 255, 0.2)"
+                    }}
+                    className="group cursor-pointer"
+                  >
+                    <div className="relative p-6 bg-black/30 backdrop-blur-sm rounded-xl border border-cyan-500/20 hover:border-cyan-400/50 transition-all duration-300">
+                      <div className="flex items-center justify-between mb-4">
+                        <div className={`w-8 h-8 bg-gradient-to-r ${project.color} rounded-lg flex items-center justify-center`}>
+                          <Globe size={16} className="text-white" />
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                          <span className="text-green-400 text-xs">{project.status}</span>
+                        </div>
+                      </div>
+                      
+                      <h4 className="text-lg font-semibold mb-2 text-white group-hover:text-cyan-400 transition-colors duration-300">
+                        {project.title}
+                      </h4>
+                      <p className="text-gray-400 text-sm mb-4">{project.category}</p>
+                      
+                      <div className="flex flex-wrap gap-1 mb-4">
+                        {project.tech.map((tech, techIdx) => (
+                          <span key={techIdx} className="px-2 py-1 bg-cyan-500/10 text-cyan-300 text-xs rounded border border-cyan-500/20">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                      
+                      {/* <button className="w-full px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-lg text-cyan-300 font-medium hover:from-cyan-500/30 hover:to-purple-500/30 transition-all duration-300 border border-cyan-500/20">
+                        View Details
+                      </button> */}
+                    </div>
+                  </motion.div>
+                </AnimatedSection>
+              ))}
+            </div>
+          </div>
+
+          {/* Portfolio Stats */}
+          <AnimatedSection className="text-center">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {[
+                { number: '50+', label: 'Projects Completed' },
+                { number: '25+', label: 'Happy Clients' },
+                { number: '100%', label: 'Client Satisfaction' },
+                { number: '24/7', label: 'Support Available' }
+              ].map((stat, idx) => (
                 <motion.div
-                  whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(0, 217, 255, 0.2)" }}
-                  className={`p-8 rounded-xl bg-gradient-to-br ${item.color} shadow-lg flex flex-col items-center h-full`}
+                  key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: idx * 0.1 }}
+                  viewport={{ once: true }}
+                  className="text-center"
                 >
-                  <h3 className="text-xl font-semibold mb-2 text-white">{item.title}</h3>
-                  <p className="text-gray-100 mb-6">{item.desc}</p>
-                  <button className="px-6 py-2 bg-black/40 rounded-full text-cyan-200 font-semibold hover:bg-black/60 transition-all duration-300 border border-cyan-400/30 hover:border-cyan-400">{item.btn}</button>
+                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent mb-2">
+                    {stat.number}
+                  </div>
+                  <div className="text-gray-400 text-sm">{stat.label}</div>
                 </motion.div>
-              </AnimatedSection>
             ))}
           </div>
+          </AnimatedSection>
         </div>
       </section>
+
+      {/* Dynamic Inquiry Modal */}
+      <DynamicInquiryModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        context="General Inquiry"
+        serviceName="Web Development Services"
+        prefillMessage="I'm interested in starting a project with grasp-it. Please provide more information about your services and pricing."
+      />
     </div>
   );
 };

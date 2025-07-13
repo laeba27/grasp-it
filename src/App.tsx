@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Moon, Sun, Menu, X } from 'lucide-react';
 import HomePage from './pages/HomePage';
 import TemplatesPage from './pages/TemplatesPage';
 import PricingPage from './pages/PricingPage';
@@ -8,11 +7,12 @@ import ContactPage from './pages/ContactPage';
 import ParticleBackground from './components/ParticleBackground';
 import FloatingElements from './components/FloatingElements';
 import Footer from './components/Footer';
-
+import LoadingScreen from './components/LoadingScreen';
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (darkMode) {
@@ -21,6 +21,19 @@ function App() {
       document.documentElement.classList.remove('dark');
     }
   }, [darkMode]);
+
+  // Listen for navigation events from child components
+  useEffect(() => {
+    const handleNavigate = (event: CustomEvent) => {
+      setCurrentPage(event.detail);
+    };
+
+    window.addEventListener('navigate', handleNavigate as EventListener);
+    
+    return () => {
+      window.removeEventListener('navigate', handleNavigate as EventListener);
+    };
+  }, []);
 
   const navigation = [
     { name: 'Home', id: 'home' },
@@ -51,16 +64,24 @@ function App() {
   };
 
   const pageTransition = {
-    type: 'tween',
-    ease: 'anticipate',
+    type: 'tween' as const,
+    ease: 'anticipate' as const,
     duration: 0.5
   };
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${
-      darkMode ? 'bg-black text-white' : 'bg-white text-black'
-    }`}>
-      <ParticleBackground />
-      <FloatingElements />
+    <>
+      <AnimatePresence>
+        {isLoading && (
+          <LoadingScreen onComplete={() => setIsLoading(false)} />
+        )}
+      </AnimatePresence>
+      
+      {!isLoading && (
+        <div className={`min-h-screen transition-colors duration-300 ${
+          darkMode ? 'bg-black text-white' : 'bg-white text-black'
+        }`}>
+          <ParticleBackground />
+          <FloatingElements />
       
       {/* Navigation */}
       <motion.nav
@@ -72,15 +93,30 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <div className="flex items-center">
+            <div className="flex items-center space-x-3">
+              {/* Logo Image */}
+              <motion.div 
+                whileHover={{ scale: 1.05, rotate: 5 }} 
+                className="cursor-pointer" 
+                onClick={() => setCurrentPage('home')}
+              >
+                <img 
+                  src="/logo.png" 
+                  alt="grasp-it logo"
+                  className="w-14 h-14 rounded-full border-2 border-cyan-500/30 hover:border-cyan-400 transition-all duration-300"
+                />
+              </motion.div>
+
+              {/* Brand Name */}
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent cursor-pointer"
                 onClick={() => setCurrentPage('home')}
               >
-                grasp-it
+                GRASP-IT
               </motion.div>
             </div>
+
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
@@ -103,7 +139,7 @@ function App() {
             {/* Contact Info */}
             <div className="hidden md:flex flex-col items-end text-right text-xs text-gray-300 mr-4">
   <span className="hover:text-cyan-400 transition-colors">📞 +91 870 025 0072</span>
-  <span className="hover:text-cyan-400 transition-colors">✉️ hello@grasp-it.com</span>
+  <span className="hover:text-cyan-400 transition-colors">✉️ gograspit12@gmail.com</span>
 </div>
             {/* Theme Toggle & Mobile Menu */}
             {/* <div className="flex items-center space-x-4">
@@ -194,7 +230,9 @@ function App() {
 
       {/* Footer */}
       <Footer />
-    </div>
+        </div>
+      )}
+    </>
   );
 }
 

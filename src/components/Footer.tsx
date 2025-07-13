@@ -124,28 +124,28 @@ const Footer: React.FC = () => {
 
             {/* Contact Info */}
             <div className="space-y-3">
-              <motion.div
-                whileHover={{ x: 5 }}
-                className="flex items-center space-x-3 text-gray-300 hover:text-cyan-400 transition-colors duration-300"
-              >
-                <Mail size={16} className="text-cyan-400" />
-                <span>hello@grasp-it.com</span>
-              </motion.div>
-              <motion.div
-                whileHover={{ x: 5 }}
-                className="flex items-center space-x-3 text-gray-300 hover:text-cyan-400 transition-colors duration-300"
-              >
-                <Phone size={16} className="text-cyan-400" />
-                <span>+1 (555) 123-4567</span>
-              </motion.div>
-              <motion.div
-                whileHover={{ x: 5 }}
-                className="flex items-center space-x-3 text-gray-300 hover:text-cyan-400 transition-colors duration-300"
-              >
-                <MapPin size={16} className="text-cyan-400" />
-                <span>New York, NY</span>
-              </motion.div>
-            </div>
+  <motion.div
+    whileHover={{ x: 5 }}
+    className="flex items-center space-x-3 text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+  >
+    <Mail size={16} className="text-cyan-400" />
+    <span>gograspit12@gmail.com</span>
+  </motion.div>
+  <motion.div
+    whileHover={{ x: 5 }}
+    className="flex items-center space-x-3 text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+  >
+    <Phone size={16} className="text-cyan-400" />
+    <span>+91 8700250072</span>
+  </motion.div>
+  <motion.div
+    whileHover={{ x: 5 }}
+    className="flex items-center space-x-3 text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+  >
+    <MapPin size={16} className="text-cyan-400" />
+    <span>Prem Nagar, Najafgarh, New Delhi 110043</span>
+  </motion.div>
+</div>
           </motion.div>
 
           {/* Services */}

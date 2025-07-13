@@ -1,12 +1,16 @@
-import React from 'react';
-import { Check, Star, Zap, Crown, Rocket } from 'lucide-react';
+import React, { useState } from 'react';
+import { Check, Zap, Crown, Rocket } from 'lucide-react';
+import DynamicInquiryModal from '../components/DynamicInquiryModal';
 
 const PricingPage: React.FC = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<string>('');
+  
   const pricingPlans = [
     {
       name: 'Starter',
       icon: <Zap size={32} />,
-      price: '$999',
+      price: '₹10,999',
       period: 'per project',
       description: 'Perfect for small businesses and personal projects',
       features: [
@@ -30,7 +34,7 @@ const PricingPage: React.FC = () => {
     {
       name: 'Professional',
       icon: <Crown size={32} />,
-      price: '$2,499',
+      price: '₹65,499',
       period: 'per project',
       description: 'Ideal for growing businesses and e-commerce',
       features: [
@@ -55,7 +59,7 @@ const PricingPage: React.FC = () => {
     {
       name: 'Enterprise',
       icon: <Rocket size={32} />,
-      price: '$4,999',
+      price: '₹99,999',
       period: 'per project',
       description: 'Complete solution for large-scale projects',
       features: [
@@ -79,22 +83,22 @@ const PricingPage: React.FC = () => {
   const addOns = [
     {
       name: 'Additional Pages',
-      price: '$199',
+      price: '₹4,999',
       description: 'Extra pages beyond the initial scope',
     },
     {
       name: 'Extended Support',
-      price: '$299',
+      price: '₹8,499',
       description: 'Additional 30 days of support and maintenance',
     },
     {
       name: 'Rush Delivery',
-      price: '$499',
+      price: '₹7,499',
       description: 'Expedited delivery (50% faster completion)',
     },
     {
       name: 'Custom Animation',
-      price: '$399',
+      price: '₹5,999',
       description: 'Bespoke animations and micro-interactions',
     },
   ];
@@ -164,6 +168,10 @@ const PricingPage: React.FC = () => {
 
               {/* CTA Button */}
               <button
+                onClick={() => {
+                  setSelectedPlan(plan.name);
+                  setModalOpen(true);
+                }}
                 className={`w-full py-4 rounded-full font-semibold transition-all duration-300 ${
                   plan.popular
                     ? 'bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700'
@@ -239,12 +247,31 @@ const PricingPage: React.FC = () => {
             <p className="text-gray-300 mb-6">
               Let's discuss your requirements and create something amazing together. Get a personalized quote today.
             </p>
-            <button className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full font-semibold hover:from-cyan-600 hover:to-purple-700 transition-all duration-300">
+            <button 
+              onClick={() => {
+                setSelectedPlan('Custom Quote');
+                setModalOpen(true);
+              }}
+              className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full font-semibold hover:from-cyan-600 hover:to-purple-700 transition-all duration-300"
+            >
               Get Custom Quote
             </button>
           </div>
         </div>
       </div>
+
+      {/* Dynamic Inquiry Modal */}
+      <DynamicInquiryModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        context="Pricing Inquiry"
+        serviceName={selectedPlan || "Web Development Services"}
+        prefillMessage={
+          selectedPlan 
+            ? `I'm interested in the ${selectedPlan} plan. Please provide more details about this package and how to proceed.`
+            : "I'm interested in your web development services. Please provide more information about your pricing and packages."
+        }
+      />
     </div>
   );
 };
